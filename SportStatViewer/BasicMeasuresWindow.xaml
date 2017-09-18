@@ -1,0 +1,157 @@
+﻿<Window x:Class="SportStatViewer.BasicMeasuresWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportStatViewer"
+        mc:Ignorable="d"
+        Title="Podstawowe miary" 
+        Height="300" 
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        ResizeMode="CanMinimize"
+        Loaded="Window_Loaded">
+
+    <StackPanel Orientation="Vertical">
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ComboBox
+                Name="voivodeshipComboBox"                       
+                Margin="5"
+                VerticalContentAlignment="Center"
+                />
+
+            <ComboBox
+                Name="sportComboBox"
+                Grid.Column="1"
+                Margin="5"
+                VerticalContentAlignment="Center"
+                />
+
+            <ComboBox
+                Name="propertyComboBox"
+                Grid.Column="2"
+                Margin="5"
+                VerticalContentAlignment="Center"
+                />
+        </Grid>
+
+        <ScrollViewer 
+            Margin="10"
+            VerticalScrollBarVisibility="Disabled" 
+            HorizontalScrollBarVisibility="Auto">
+            
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                    <RowDefinition/>
+                </Grid.RowDefinitions>
+
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition/>
+                    <ColumnDefinition/>
+                </Grid.ColumnDefinitions>
+
+                <Label
+                    Content="Średnia arytmetyczna:"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="1"
+                    Content="Mediana:"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="2"
+                    Content="Dominanta:"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="3"
+                    Content="Odchylenie ćwiartkowe:"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="4"
+                    Content="Odchylenie standardowe:"
+                    VerticalAlignment="Center"
+                    />
+                
+                <Label
+                    Grid.Row="5"
+                    Content="Współczynnik skośności:"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="6"
+                    Content="Współczynnik Giniego:"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Column="1"
+                    Name="arithmeticAverageLabel"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="1"
+                    Grid.Column="1"
+                    Name="medianLabel"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="2"
+                    Grid.Column="1"
+                    Name="dominantLabel"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="3"
+                    Grid.Column="1"
+                    Name="quarterDeviationLabel"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="4"
+                    Grid.Column="1"
+                    Name="standardDeviationLabel"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="5"
+                    Grid.Column="1"
+                    Name="skewnessLabel"
+                    VerticalAlignment="Center"
+                    />
+
+                <Label
+                    Grid.Row="6"
+                    Grid.Column="1"
+                    Name="giniCoefficientLabel"
+                    VerticalAlignment="Center"
+                    />
+            </Grid>
+        </ScrollViewer>
+    </StackPanel>
+</Window>

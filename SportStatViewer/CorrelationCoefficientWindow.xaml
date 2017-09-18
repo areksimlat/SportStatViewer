@@ -1,0 +1,115 @@
+﻿<Window x:Class="SportStatViewer.CorrelationCoefficientWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:charting="clr-namespace:System.Windows.Forms.DataVisualization.Charting;assembly=System.Windows.Forms.DataVisualization"
+        xmlns:local="clr-namespace:SportStatViewer"
+        mc:Ignorable="d"
+        Title="Współczynnik korelacji" 
+        Height="530" 
+        Width="500"
+        WindowStartupLocation="CenterOwner"
+        Loaded="Window_Loaded">
+
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition Height="35"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        
+        <Label
+            Content="Województwo:"
+            VerticalAlignment="Center"
+            />
+
+        <Label
+            Grid.Row="1"
+            Content="Sport:"
+            VerticalAlignment="Center"
+            />
+
+        <Label
+            Grid.Row="2"
+            Content="Oś X:"
+            VerticalAlignment="Center"
+            />
+
+        <Label
+            Grid.Row="3"
+            Content="Oś Y:"
+            VerticalAlignment="Center"
+            />
+
+        <Label
+            Grid.Row="4"
+            Content="Współczynnik korelacji Pearsona:"
+            VerticalAlignment="Center"
+            />
+
+        <ComboBox
+            Grid.Column="1"
+            Name="voivodeshipComboBox"
+            Margin="5"
+            />
+
+        <ComboBox
+            Grid.Row="1"
+            Grid.Column="1"
+            Name="sportComboBox"
+            Margin="5"
+            />
+
+        <ComboBox
+            Grid.Row="2"
+            Grid.Column="1"
+            Name="axisXComboBox"
+            Margin="5"
+            />
+
+        <ComboBox
+            Grid.Row="3"
+            Grid.Column="1"
+            Name="axisYComboBox"
+            Margin="5"
+            />
+        
+        <Label
+            Grid.Row="4"
+            Grid.Column="1"
+            Name="pearsonCoefficientLabel"
+            VerticalAlignment="Center"
+            />
+
+        <StackPanel 
+            Grid.Row="5" 
+            Grid.ColumnSpan="2">
+            
+            <WindowsFormsHost x:Name="host">
+                <charting:Chart x:Name="chart">
+                    <charting:Chart.Series>
+                        <charting:Series
+                        Name="series"   
+                        ChartType="Column"
+                        />
+                    </charting:Chart.Series>
+
+                    <charting:Chart.ChartAreas>
+                        <charting:ChartArea
+                        Name="chartArea"
+                        />
+                    </charting:Chart.ChartAreas>
+                </charting:Chart>
+            </WindowsFormsHost>
+        </StackPanel>
+    </Grid>
+</Window>

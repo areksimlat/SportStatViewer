@@ -1,0 +1,119 @@
+﻿<Window x:Class="SportStatViewer.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SportStatViewer"
+        mc:Ignorable="d"
+        Title="MainWindow" 
+        SizeToContent="WidthAndHeight" 
+        WindowStartupLocation="CenterScreen">
+
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Plik">
+                <MenuItem Header="Wczytaj" Click="MenuItem_Load_Click"/>
+            </MenuItem>
+            <MenuItem Header="Statystyki">
+                <MenuItem Header="Podstawowe miary" Click="MenuItem_BasicMeasures_Click"/>
+                <MenuItem Header="Współczynnik korelacji" Click="MenuItem_CorrelationCoefficient_Click"/>
+            </MenuItem>
+            <MenuItem Header="Legenda">
+                <MenuItem Header="Pokaż" Click="MenuItem_LegendShow_Click"/>
+            </MenuItem>
+        </Menu>
+
+        <StatusBar DockPanel.Dock="Bottom">
+            <Button 
+                Content="-"
+                Width="30"
+                Click="Button_ZoomOut_Click"/>
+
+            <Button 
+                Content="+"
+                Width="30"
+                Click="Button_ZoomIn_Click"/>
+        </StatusBar>
+
+        <DockPanel>
+            <ScrollViewer
+                VerticalScrollBarVisibility="Auto" 
+                HorizontalScrollBarVisibility="Auto"
+                MaxHeight="600">                
+                <TreeView
+                    Name="dataTreeView"
+                    DockPanel.Dock="Left" 
+                    Width="180"/>
+            </ScrollViewer>
+
+            <ScrollViewer  
+                Name="mapScrollViewer"
+                Margin="10,10,10,10"
+                HorizontalAlignment="Left" 
+                VerticalAlignment="Top"
+                HorizontalScrollBarVisibility="Visible">
+
+                <Canvas 
+                    Name="mapCanvas" 
+                    MouseLeftButtonDown="mapCanvas_MouseLeftButtonDown"
+                    MouseMove="mapCanvas_MouseMove">
+
+                    <Canvas.RenderTransform>
+                        <ScaleTransform x:Name="mapCanvasScaleTransform"/>
+                    </Canvas.RenderTransform>
+                </Canvas>
+
+            </ScrollViewer>
+
+            <Popup 
+                Name="previewPopup"
+                IsOpen="False"                
+                Placement="Relative"
+                PlacementTarget="{Binding ElementName=mapCanvas}"
+                PopupAnimation="Slide"                
+                AllowsTransparency="True"
+                MouseLeftButtonDown="previewPopup_MouseLeftButtonDown">
+
+                <Canvas Width="210" Height="215">
+                    <Path Stroke="Gray" StrokeThickness="2">
+                        <Path.Fill>
+                            <SolidColorBrush Color="#bdbdbd" Opacity="0.9"/>
+                        </Path.Fill>
+                        <Path.Data>
+                            <PathGeometry >
+                                <PathFigure StartPoint="0,0">
+                                    <LineSegment Point="150,20"/>
+                                    <ArcSegment 
+                                        Size="100,100" 
+                                        RotationAngle="45" 
+                                        IsLargeArc="True"
+                                        SweepDirection="Clockwise" 
+                                        Point="30,40"/>
+                                    <LineSegment Point="0,0"/>
+                                </PathFigure>
+                            </PathGeometry>
+                        </Path.Data>
+                    </Path>
+
+                    <Label 
+                        Name="prevLabel"
+                        FontSize="13"   
+                        Foreground="#004c00"
+                        HorizontalContentAlignment="Center"
+                        Width="140"
+                        Canvas.Top="15"
+                        Canvas.Left="20"
+                        />
+
+                    <Canvas 
+                        Name="previewCanvas"
+                        Width="150" 
+                        Height="150"
+                        Canvas.Top="40"
+                        Canvas.Left="30"/>
+                </Canvas>
+            </Popup>
+
+        </DockPanel>
+    </DockPanel>
+</Window>
